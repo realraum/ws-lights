@@ -1,6 +1,7 @@
 {
   "name": "ws-lights",
   "version": "0.0.0",
+  "type": "module",
   "description": "",
   "main": "build/main.js",
   "scripts": {
@@ -9,6 +10,12 @@
   "author": "Tanja",
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
-    "@types/node": "^20.4.8"
+    "@types/lodash": "^4.14.196",
+    "@types/node": "^20.4.8",
+    "@types/ws": "^8.5.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "ws": "^8.13.0"
   }
 }
