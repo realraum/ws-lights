@@ -19,9 +19,10 @@ const trans_flag_colors: Color[] = [
   // { r: 0, g: 0, b: 255, ww: 0, cw: 0 },
   // { r: 0, g: 255, b: 0, ww: 0, cw: 0 },
   // { r: 255, g: 0, b: 0, ww: 0, cw: 0 },
-  { r: 91, g: 206, b: 250, ww: 0, cw: 0 },
-  { r: 245, g: 169, b: 184, ww: 0, cw: 0 },
-  { r: 0, g: 0, b: 0, ww: 0, cw: 255 },
+  { r: 91, g: 206, b: 250, ww: 0, cw: 0 }, // light blue
+  // { r: 245, g: 169, b: 184, ww: 0, cw: 0 }, // pink
+  { r: 0, g: 0, b: 0, ww: 0, cw: 255 }, // white
+  { r: 255, g: 20, b: 20, ww: 0, cw: 0 }, // pink
 ];
 
 interface Colors {
@@ -42,7 +43,7 @@ const msg_base = {
       trans_flag_colors[1],
       trans_flag_colors[2],
     ],
-    fadeduration: 100,
+    fadeduration: 1100,
   },
 };
 
@@ -51,31 +52,23 @@ function transform(colors: Colors) {
 
   const fac = factors["ceiling1"];
 
-  newColors.data.colourlist = colors.data.colourlist.map((color) => {
-    return {
-      r: color.r / fac.r_factor,
-      g: color.g / fac.g_factor,
-      b: color.b / fac.b_factor,
-      ww: color.ww / fac.ww_factor,
-      cw: color.cw / fac.cw_factor,
-    };
-  });
+  // newColors.data.colourlist = newColors.data.colourlist.map((color) => {
+  //   return {
+  //     r: color.r / fac.r_factor,
+  //     g: color.g / fac.g_factor,
+  //     b: color.b / fac.b_factor,
+  //     ww: color.ww / fac.ww_factor,
+  //     cw: color.cw / fac.cw_factor,
+  //   };
+  // });
 
   newColors.data.colourlist = newColors.data.colourlist.map((color) => {
-    const c_vec_len = Math.sqrt(
-      color.r * color.r +
-        color.g * color.g +
-        color.b * color.b +
-        color.ww * color.ww +
-        color.cw * color.cw
-    );
-
     return {
-      r: Math.round((color.r / c_vec_len) * 1000),
-      g: Math.round((color.g / c_vec_len) * 1000),
-      b: Math.round((color.b / c_vec_len) * 1000),
-      ww: Math.round((color.ww / c_vec_len) * 1000),
-      cw: Math.round((color.cw / c_vec_len) * 1000),
+      r: Math.round(color.r * (1000 / 255)),
+      g: Math.round(color.g * (1000 / 255)),
+      b: Math.round(color.b * (1000 / 255)),
+      ww: Math.round(color.ww * (1000 / 255)),
+      cw: Math.round(color.cw * (1000 / 255)),
     };
   });
 
