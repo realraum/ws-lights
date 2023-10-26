@@ -8,8 +8,6 @@
 3. Prepare the dependencies with `pnpm install`.
 4. Run the project with `tsc && node .`.
 
-## _**This is a disgrace, do not publish this.**_
-
 ---
 
 In reality, all you need to do is send
